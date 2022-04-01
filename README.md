@@ -73,4 +73,5 @@ SELECT COUNT(emp_no),title
 <br>ORDER BY COUNT(emp_no) DESC;
 <br><br>
 Please see the adjusted result through the image below. Now we can see at least 1 manager is included in the mentorship program, and the total number of employees who are eligible for the program becomes to 19,905.
- ![adjusted_mentorship_eligibility](adjusted_mentorship_eligibility.png) 
+
+![adjusted_mentorship_eligibility](adjusted_mentorship_eligibility.png) 
