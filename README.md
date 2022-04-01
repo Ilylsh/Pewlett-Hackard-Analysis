@@ -21,7 +21,7 @@ The analysis is to help the company to determine the number of the retiring empl
 
 ### Additional Insights
 - Overview of the company employees status
-<br> We would like to help company understand the real impact on company overall resulted from the retiring employees. So we would perform the LEFT JOIN between employees table and title table, using DISTINCT function to get the overall employee number and each employee's latest job title. Using the code below:
+<br> We would like to help company understand the real impact on company overall resulted from the retiring employees. So we would perform the LEFT JOIN between employees table and title table, using DISTINCT function to get the overall employee number and each employee's latest job title. Using the query below:
 <br>
 SELECT DISTINCT ON (emp_no) e.emp_no,
 <br>e.first_name,
@@ -35,7 +35,7 @@ SELECT DISTINCT ON (emp_no) e.emp_no,
 <br>ON e.emp_no = ti.emp_no
 <br>ORDER BY e.emp_no;
 <br>
-The total number of employees is 300,024. Based on the total employee number and retiring number, we can tell around 24% of the senior employees are going to retire from the company, which is a quite significant number and human resources change to a company. 
+<br>The total number of employees is 300,024. Based on the total employee number and retiring number, we can tell around 24% of the senior employees are going to retire from the company, which is a quite significant number and human resources change to a company. 
 
 - Mentorship Program Selection Criteria
 <br> We would like to further break down the titles of the employees who are eligible for the mentorship program. By performing following query, we can tell there's no manager eligible for the mentorship program under the current criteria:
@@ -45,6 +45,7 @@ SELECT COUNT(title), title
 <br>FROM mentorship_eligibilty
 <br>GROUP BY title
 <br>ORDER BY COUNT(title) DESC;
+<br>
 <br> Based on the current result, we would like to try to enlarge the criteria to allow more employees into the selection, and see if that can help us include candidate for Manager role. 
 <br>
 Attempt: Adjust the criteria to allow the employees who were born between 1964 to 1965 also become eligible for the program by performing following query:
@@ -65,11 +66,11 @@ SELECT DISTINCT ON (emp_no) e.emp_no,
 <br>WHERE (e.birth_date BETWEEN '1964-01-01' AND '1965-12-31')
 <br>AND (de.to_date = '9999-01-01')
 <br>ORDER BY e.emp_no;
-<br>
+<br><br>
 SELECT COUNT(emp_no),title 
 <br>FROM mentorship_eligibilty2
 <br>GROUP BY title
 <br>ORDER BY COUNT(emp_no) DESC;
-<br>
+<br><br>
 Please see the adjusted result through the image below. Now we can see at least 1 manager is included in the mentorship program, and the total number of employees who are eligible for the program becomes to 19,905.
  ![adjusted_mentorship_eligibility](adjusted_mentorship_eligibility.png) 
